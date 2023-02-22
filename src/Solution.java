@@ -77,15 +77,31 @@ public class Solution {
             serviceStation.doService();
         }
 
+        System.out.println("\n----- Introduction_to_collections_Map -----\n");
+
         Map<Transport<?>, Mechanic> transportMechanicHashMap = new HashMap<>();
         transportMechanicHashMap.put(car1, a1);
         transportMechanicHashMap.put(bus1, a2);
         transportMechanicHashMap.put(track1, a3);
 
-        System.out.println();
-
         for (Map.Entry<Transport<?>, Mechanic> objectObjectEntry : transportMechanicHashMap.entrySet()) {
             System.out.println(objectObjectEntry.getKey() + " - " + objectObjectEntry.getValue());
+        }
+
+        System.out.println("\n----- Collections_Set_Iterator -----\n");
+
+        Set<DriverInfo> driverInfoSet = new HashSet<>();
+        // driverInfoSet.add(new DriverInfo()); // Вот тут не совсем понятно делать новых водителей или как?
+        driverInfoSet.add(car1.getDriverInfo());
+        driverInfoSet.add(bus1.getDriverInfo());
+        driverInfoSet.add(track1.getDriverInfo());
+        driverInfoSet.add(new License_B("Kot", true, 1.));
+        driverInfoSet.add(new License_B("Kot", true, 1.)); // Проверка на добавление дублей.
+
+        Iterator<DriverInfo> iterator = driverInfoSet.iterator();
+        while (iterator.hasNext()) {
+            DriverInfo driverInfo = iterator.next();
+            System.out.println(driverInfo);
         }
 
     }
